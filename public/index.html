@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sua Rota</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header>
+      <p id="saudacao" class="suave"></p>
+      <h1>Para onde vamos?</h1>
+    </header>
+
+    <div class="linha-busca">
+      <label class="busca">
+        <span class="so-leitor">Buscar lugares</span>
+        <input id="busca" type="search" placeholder="Busque praias, trilhas, restaurantes...">
+      </label>
+      <button id="btn-filtro" class="filtro" aria-pressed="false" aria-label="Mostrar só favoritos">★</button>
+    </div>
+
+    <button id="destaque" class="destaque" hidden>
+      <span class="eyebrow claro">Rota da semana</span>
+      <strong id="destaque-titulo"></strong>
+      <span id="destaque-sub"></span>
+      <span class="explorar">Explorar lugar ›</span>
+    </button>
+
+    <section>
+      <p class="eyebrow">Escolhas da ilha</p>
+      <div class="cab">
+        <h2 id="titulo-lista">Lugares para sentir Floripa</h2>
+        <div class="cab-acoes">
+          <button id="btn-todos" class="link">Ver todos</button>
+          <button id="btn-novo" class="link">+ Novo</button>
+        </div>
+      </div>
+      <div id="lista" class="trilho"></div>
+      <p id="vazio" class="suave" hidden>Nenhum lugar encontrado. Tente outro nome ou cadastre um novo local.</p>
+    </section>
+
+    <section>
+      <p class="eyebrow">Vivido por pessoas</p>
+      <h2>Experiências recentes</h2>
+      <p class="suave">As experiências dos viajantes vão aparecer aqui.</p>
+    </section>
+  </div>
+
+  <nav class="menu" aria-label="Principal">
+    <button class="ativo" data-aba="inicio"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>Início</button>
+    <button data-aba="mapa"><svg viewBox="0 0 24 24"><path d="M9 4l6 2 6-2v14l-6 2-6-2-6 2V6zM9 4v14M15 6v14"/></svg>Mapa</button>
+    <button data-aba="experiencias"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg>Experiências</button>
+    <button data-aba="perfil"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>Perfil</button>
+  </nav>
+
+  <dialog id="dlg-detalhe">
+    <div id="detalhe-capa" class="capa capa-grande"></div>
+    <div class="dlg-corpo">
+      <p id="detalhe-cat" class="eyebrow"></p>
+      <h2 id="detalhe-nome"></h2>
+      <p id="detalhe-local" class="suave"></p>
+      <p id="detalhe-desc"></p>
+      <div class="acoes">
+        <button id="detalhe-fav" class="b-escuro"></button>
+        <button id="detalhe-editar" class="b-escuro">Editar</button>
+        <button id="detalhe-apagar" class="b-perigo">Apagar</button>
+        <button id="detalhe-fechar" class="b-texto">Fechar</button>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog id="dlg-form">
+    <form id="form" novalidate class="dlg-corpo">
+      <h2 id="form-titulo">Novo local</h2>
+      <div class="campos">
+        <label>Nome <input id="nome" autocomplete="off"></label>
+        <label>Endereço <input id="endereco" autocomplete="off"></label>
+        <label>Cidade <input id="cidade" autocomplete="off"></label>
+        <label>Estado <input id="estado" maxlength="2" placeholder="SC" autocomplete="off"></label>
+        <label>ID da categoria <input id="id_categoria" type="number" min="1" placeholder="1"></label>
+        <label class="largo">Descrição (opcional) <textarea id="descricao" rows="3"></textarea></label>
+      </div>
+      <p id="form-erro" class="erro" role="alert"></p>
+      <div class="acoes">
+        <button type="submit" class="b-escuro">Salvar local</button>
+        <button type="button" id="form-cancelar" class="b-texto">Cancelar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="aviso" class="aviso" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
